@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대학영어 설문조사</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div>
+        <header>
+            <div id="logo">
+                <img src="images/snu-logo.png" alt="snu-logo">
+                <h1>대학영어2: 글쓰기 설문조사</h1>
+                <img src="images/starbucks-coffee.png" alt="coffee-image">
+            </div>
+            <div id="description">
+                <p>대학영어2: 글쓰기 최종 에세이 과제인 ""의 자료로 활용될 것입니다.</p>
+                <p>설문에 응답해주신 학우 분들 중 5명을 추첨하여 <mark>스타벅스 기프티콘</mark>을 증정하오니 꼭 전화번호를 남겨주시기 바랍니다.</p>
+                <p>2023년 01월 20일에 기프티콘 지급이 완료됩니다.</p>
+                <p>수집한 정보는 겨울학기 종강 이후 전부 처분됩니다.</p>
+            </div>
+        </header>
+        <form action="insert.php" method="post">
+            <fieldset id="personal-info">
+                <legend>개인정보</legend>
+                <ul>
+                    <li>
+                        <label for="telephone">전화번호</label>
+                        <input type="tel" id="telephone" name="telephone" placeholder="예) 010-1234-5678" required>
+                    </li>
+                    <li>
+                        <label for="college">단과대</label>
+                        <select id="college" name="college">
+                            <option value="1">인문대학</option>
+                            <option value="2">사회과학대학</option>
+                            <option value="3">자연과학대학</option>
+                            <option value="4">간호대학</option>
+                            <option value="5">경영대학</option>
+                            <option value="6">공과대학</option>
+                            <option value="7">농업생명과학대학</option>
+                            <option value="8">미술대학</option>
+                            <option value="9">사범대학</option>
+                            <option value="10">생활과학대학</option>
+                            <option value="11">수의과대학</option>
+                            <option value="12">약학대학</option>
+                            <option value="13">음악대학</option>
+                            <option value="14">의과대학</option>
+                            <option value="15">자유전공학부</option>
+                        </select>
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset class="question">
+                <legend>Question 1</legend>
+                <p>1. 일상생활에 AI 기술이 얼만큼 파고들었다고 생각하십니까?</p>
+                <ul>
+                    <li><label><input type="radio" name="question1" value="1" required>매우 조금</label></li>
+                    <li><label><input type="radio" name="question1" value="2">조금</label></li>
+                    <li><label><input type="radio" name="question1" value="3">보통</label></li>
+                    <li><label><input type="radio" name="question1" value="4">많이</label></li>
+                    <li><label><input type="radio" name="question1" value="5">매우 많이</label></li>
+                </ul>
+            </fieldset>
+            <fieldset class="question">
+                <legend>Question 2</legend>
+                <p>2. AI가 생성한 이미지나 텍스트에 대해 저작권을 인정해줘야 된다고 생각하십니까?</p>
+                <ul class="yes-or-no">
+                    <li><label><input type="radio" name="question2" value="1" required>예</label></li>
+                    <li><label><input type="radio" name="question2" value="0">아니오</label></li>
+                </ul>
+            </fieldset>
+            <fieldset class="question">
+                <legend>Question 3</legend>
+                <p>3. AI가 생산해낸 컨텐츠를 소비할 의향이 있습니까?</p>
+                <ul class="yes-or-no">
+                    <li><label><input type="radio" name="question3" value="1" onclick="toggleQuestion3(true)" required>예</label></li>
+                    <li><label><input type="radio" name="question3" value="0" onclick="toggleQuestion3(false)">아니오</label></li>
+                </ul>
+
+                <div class="inner-question" id="question3-inner1">
+                    <p>3-1. 어느 분야의 컨텐츠에 관심이 있으신가요? <small>(복수 선택 가능)</small></p>
+                    <ul>
+                        <li><label><input type="checkbox" name="question3-in1[]" value="music">음악</label></li>
+                        <li><label><input type="checkbox" name="question3-in1[]" value="novel">소설</label></li>
+                        <li><label><input type="checkbox" name="question3-in1[]" value="webtoon">웹툰</label></li>
+                        <li><label><input type="checkbox" name="question3-in1[]" value="animation">애니</label></li>
+                    </ul>
+                </div>
+            </fieldset>
+            <fieldset class="question">
+                <legend>Question 4</legend>
+                <p>4. ChatGPT에 대해서 알고계십니까?</p>
+                <ul class="yes-or-no">
+                    <li><label><input type="radio" name="question4" value="1" onclick="toggleQuestion4(true)" required>예</label></li>
+                    <li><label><input type="radio" name="question4" value="0" onclick="toggleQuestion4(false)">아니오</label></li>
+                </ul>
+                <div class="inner-question" id="question4-inner1">
+                    <p>4-1. ChatGPT를 사용해보신 경험이 있으신가요?</p>
+                    <ul class="yes-or-no">
+                        <li><label><input type="radio" name="question4-in1" value="1">예</label></li>
+                        <li><label><input type="radio" name="question4-in1" value="0">아니오</label></li>
+                    </ul>
+                </div>
+                <div class="inner-question" id="question4-inner2">
+                    <p>4-2. 대학 과제를 할 때 ChatGPT를 활용하는 것이 바람직하다고 생각하십니까?</p>
+                    <ul class="yes-or-no">
+                        <li><label><input type="radio" name="question4-in2" value="1">예</label></li>
+                        <li><label><input type="radio" name="question4-in2" value="0">아니오</label></li>
+                    </ul>
+                </div>
+            </fieldset>
+            <div id="send">
+                <input type="submit" value="전송">
+                <input type="reset" value="양식 지우기">
+            </div>
+        </form>
+        <footer>
+            <p><small>설문조사가 끝났습니다! 응답해주셔서 감사합니다.</small></p>
+        </footer>
+    </div>
+    <script src="script/custom.js"></script>
+</body>
+
+</html>
